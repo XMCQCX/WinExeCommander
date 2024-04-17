@@ -39,7 +39,7 @@ Class WinExeCmd {
         this.gErrorTitle       := 'Error - ' this.scriptName               
         this.gDelConfirmTitle  := 'Delete Confirmation - ' this.scriptName    
         this.gSaveConfirmTitle := 'Profile Saved - ' this.scriptName               
-        this.linkGitHub        := 'https://github.com/MCxQC/Hello-World'
+        this.linkGitHub        := 'https://github.com/XMCQCX/WinExeCommander'
         this.linkPayPal        := 'https://www.paypal.com/paypalme/martinchartier/10'
 
         if A_ScriptName == 'WinExeCmd.ahk' 
