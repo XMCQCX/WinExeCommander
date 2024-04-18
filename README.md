@@ -52,7 +52,7 @@ USB, Bluetooth, HDMI etc...
   - To fill the edit fields, you can manually enter data, or double-click on a listview item, or right-click on an item and select "Copy Row Data to Edit Fields".
 
 * Edit an Event
-  - Select an event and click the 'Edit' button, or double-click on it in the listview, or right-click and choose 'Edit Event'
+  - Select an event and click the "Edit" button, double-click on it in the listview, or right-click and choose "Edit Event".
   
 * Write a function associated with the event.
   - In the file "WinExeCommander.ahk", create a function to be called when the event is created or terminated. Append "_Created" or "_Terminated" to the event function name.
