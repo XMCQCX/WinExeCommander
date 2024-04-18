@@ -4518,7 +4518,7 @@ Class WinExeCmd {
     static GetEventFunctionLineNumber(function)
     {
         for index, line in this.linesFuncFile
-            if RegExMatch(line, '^(?!;\s*)(?i)' function '_(Created|Terminated)\(', &match)
+            if RegExMatch(line, '^(?!;\s*)(?i)' function '_(Created|Terminated)', &match) && IsSet(%match[0]%)
                 return index
                 
         return '-'
@@ -4529,9 +4529,9 @@ Class WinExeCmd {
     static GetEventsFunctionLineNumber(mEvents)
     {
         for index, line in this.linesFuncFile {
-            if RegExMatch(line, '^(?!;\s*)(?i)(.+?)_(Created|Terminated)\(', &match) {
+            if RegExMatch(line, '^(?!;\s*)(?i)(.+?)_(Created|Terminated)', &match) {
                 for _, mEvent in mEvents {
-                    if (mEvent['function'] = match[1] && !mEvent.Has('lineNumber')) {
+                    if (mEvent['function'] = match[1] && IsSet(%match[0]%) && !mEvent.Has('lineNumber')) {                                       
                         mEvent['lineNumber'] := index
                         continue
                     }
