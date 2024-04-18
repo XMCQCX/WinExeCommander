@@ -2,7 +2,7 @@
     Script:    WinExeCommander.ahk
     Author:    Martin Chartier (XMCQCX)
     Github:    https://github.com/XMCQCX/WinExeCommander
-    AHKForum:
+    AHKForum:  https://www.autohotkey.com/boards/viewtopic.php?f=83&t=128956
 */
 
 #Requires AutoHotkey v2.0
