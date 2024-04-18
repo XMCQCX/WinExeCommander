@@ -181,15 +181,15 @@ Function Name: MSPaint_ProcessSetPriority
   >    - **Timer**
   >        - Check for the existence of the process at a specified time interval.
   >
-  > - **Period**
-  >    - Period: The interval (in milliseconds) to check for the presence of the process.
-  >
   > - **Mode**
   >    - **1:** Call "Function_Created" for every process ID created. Call "Function_Terminated" for every process ID terminated.
   >    - **2:** Call "Function_Created" only for the initial process ID created. Call "Function_Terminated" only when the last process ID is terminated. (Default)
   >    - **3:** Call "Function_Created" for every process ID created. Call "Function_Terminated" only when the last process ID is terminated.
-  > 
-  >    * Some programs generate various processes with the same name. This has the potential to cause confusion when the mode is set to 1, as the event function will execute multiple times. The default mode is 2 to eliminate this potential confusion.
+  >  
+  >    *Some programs generate various processes with the same name. This has the potential to cause confusion when the mode is set to 1, as the event function will execute multiple times. The default mode is 2 to eliminate this potential confusion.
+  >
+  > - **Period**
+  >    - Period: The interval (in milliseconds) to check for the presence of the process.
   
 ### Device Parameters
   > - **DeviceName**
@@ -204,15 +204,14 @@ Function Name: MSPaint_ProcessSetPriority
   >    - **Timer**
   >        - Check for the existence of the device at a specified time interval.
   > 
-  > - **Period/Delay**
-  >    - Period: The interval (in milliseconds) to check for the device's existence.
-  >    - Delay (DeviceChange): The approximate delay (in milliseconds) for checking the existence of the device after a device event message is fired by the DeviceChange function.
-  >  
   > - **Mode**
   >    - **1:** Call "Function_Created" for every device connected. Call "Function_Terminated" for every device disconnected.
   >    - **2:** Call "Function_Created" only for the initial device connected. Call "Function_Terminated" only when the last device is disconnected. (Default)
   >    - **3:** Call "Function_Created" for every device connected. Call "Function_Terminated" only when the last device is disconnected.
-  
+  >
+  > - **Period/Delay**
+  >    - Period: The interval (in milliseconds) to check for the device's existence.
+  >    - Delay (DeviceChange): The approximate delay (in milliseconds) for checking the existence of the device after a device event message is fired by the DeviceChange function.
 
 # Methods
 
