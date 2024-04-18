@@ -5,7 +5,7 @@
     Version:   1.0.0
     Tested on: Windows 11
     Github:    https://github.com/XMCQCX/WinExeCommander
-    AHKForum:
+    AHKForum:  https://www.autohotkey.com/boards/viewtopic.php?f=83&t=128956
 */
 
 #Include '..\Lib\JSON.ahk'
