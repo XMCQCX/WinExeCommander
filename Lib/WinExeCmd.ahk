@@ -30,7 +30,7 @@ Class WinExeCmd {
     {
         this.debugMode         := false
         this.scriptName        := 'WinExeCommander'
-        this.scriptVersion     := 'v1.0.0'
+        this.scriptVersion     := 'v1.0.1'
         this.gMainTitle        := 'Events Manager - ' this.scriptName ' ' this.scriptVersion
         this.gEventTitle       := 'Event Creator - ' this.scriptName
         this.gProfileTitle     := 'Profiles Manager - ' this.scriptName
