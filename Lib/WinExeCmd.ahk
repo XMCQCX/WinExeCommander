@@ -1,7 +1,7 @@
 /*
     Script:    WinExeCmd.ahk
     Author:    Martin Chartier (XMCQCX)
-    Date:      2024-04-17
+    Date:      2024-04-20
     Version:   1.0.1
     Tested on: Windows 11
     Github:    https://github.com/XMCQCX/WinExeCommander
