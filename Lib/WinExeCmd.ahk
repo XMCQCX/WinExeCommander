@@ -1,8 +1,8 @@
-﻿/*
+/*
     Script:    WinExeCmd.ahk
     Author:    Martin Chartier (XMCQCX)
     Date:      2024-04-17
-    Version:   1.0.0
+    Version:   1.0.1
     Tested on: Windows 11
     Github:    https://github.com/XMCQCX/WinExeCommander
     AHKForum:  https://www.autohotkey.com/boards/viewtopic.php?f=83&t=128956
@@ -465,7 +465,11 @@ Class WinExeCmd {
         ; Hotkeys =====================================
         HotIfWinActive(this.gMainTitle ' ahk_class AutoHotkeyGUI')
         Hotkey('Delete', this.gMain_lv_event_DeleteEvent.Bind(this))
-        Hotkey('^a', this.gMain_lv_event_SelectAll.Bind(this))
+        Hotkey('^a', this.LV_SelectAll.Bind(this, 'gMain', 'lv_event'))
+        
+        HotIfWinActive(this.gProfileTitle ' ahk_class AutoHotkeyGUI')
+        Hotkey('Delete', this.gDelProfile_lv_Delete.Bind(this))
+        Hotkey('^a', this.LV_SelectAll.Bind(this, 'gProfile', 'lv'))
 
         ;============================================== 
         this.callbackNotifyIcon := this.AHK_NOTIFYICON.Bind(this)
@@ -2092,7 +2096,7 @@ Class WinExeCmd {
         GuiButtonIcon(this.gMain.btn_deleteEvent, this.mIcons['gMainX'], 1, 's20')
         this.gMain.Tips.SetTip(this.gMain.btn_deleteEvent, 'Delete selected event(s)')
         this.gMain.btn_selectAll := this.gMain.Add('Button', 'x+' this.btnMarginX ' w' this.gMain.btnTopSize ' h' this.gMain.btnTopSize)
-        this.gMain.btn_selectAll.OnEvent('Click', this.gMain_lv_event_SelectAll.Bind(this))
+        this.gMain.btn_selectAll.OnEvent('Click', this.LV_SelectAll.Bind(this, 'gMain', 'lv_event'))
         GuiButtonIcon(this.gMain.btn_selectAll, this.mIcons['selectAll'], 1, 's20')
         this.gMain.Tips.SetTip(this.gMain.btn_selectAll, 'Select All')
         this.gMain.btn_checkAll := this.gMain.Add('Button', 'x+' this.btnMarginX ' w' this.gMain.btnTopSize ' h' this.gMain.btnTopSize)
@@ -2192,7 +2196,7 @@ Class WinExeCmd {
         this.gMain.mb_file.Add()
         this.gMain.mb_file.Add('Close', this.gMain_Close.Bind(this))
         this.gMain.mb.Add('Edit', this.gMain.mb_edit := Menu())
-        this.gMain.mb_edit.Add('Select All`tCtrl+A', this.gMain_lv_event_SelectAll.Bind(this))
+        this.gMain.mb_edit.Add('Select All`tCtrl+A', this.LV_SelectAll.Bind(this, 'gMain', 'lv_event'))
         this.gMain.mb_edit.SetIcon('Select All`tCtrl+A', this.mIcons['selectAll'])
         this.gMain.mb.Add('Options', this.gMain.mb_options := Menu())
         this.gMain.mb_options.Add('Settings...', this.gSettings_Show.Bind(this))
@@ -2397,7 +2401,7 @@ Class WinExeCmd {
 
     ;============================================================================================
 
-    static gMain_lv_event_SelectAll(*) => this.gMain.lv_event.Modify(0, 'Select')
+    static LV_SelectAll(gName, LVname, *) => this.%gName%.%LVname%.Modify(0, 'Select')
 
     ;============================================================================================
 
@@ -3013,7 +3017,7 @@ Class WinExeCmd {
     {
         wasNotCritical := this.SetCritical_On(A_IsCritical)
 
-        Loop Parse, ListViewGetContent('Col1 Selected', this.gProfile.lv.hwnd, this.gMainTitle ' ahk_class AutoHotkeyGUI'), '`n' {
+        Loop Parse, ListViewGetContent('Col1 Selected', this.gProfile.lv.hwnd, this.gProfileTitle ' ahk_class AutoHotkeyGUI'), '`n' {
             this.mProfiles.Delete(A_LoopField)
             Try FileRecycle('Profiles\' A_LoopField '.json')
         }
@@ -4382,6 +4386,8 @@ Class WinExeCmd {
 
     static Create_TrayMenuSelectProfile()
     {  
+        this.trayMenuSelectProfile.Delete()
+
         for _, value in ['All Events Enable', 'All Events Disable']
             A_TrayMenu.SetIcon(value, this.mIcons['tMenuTrans'],, this.m['mUser']['trayMenuIconSize'])
 
