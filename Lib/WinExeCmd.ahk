@@ -1599,11 +1599,6 @@ Class WinExeCmd {
 
     static SetEvent(state, eventName)
     {
-        this.ValidateParams(
-            {num: 1, name: 'state',     value: state,     expect: 'Integer'},
-            {num: 2, name: 'eventName', value: eventName, expect: 'String|Integer'}
-        )
-
         if !RegExMatch(state, '^(1|0)$') || (this.m['mEvents'].Has(eventName) && this.m['mEvents'][eventName]['state'] = state)
             return
 
