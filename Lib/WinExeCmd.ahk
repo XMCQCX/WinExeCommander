@@ -2,7 +2,7 @@
     Script:    WinExeCmd.ahk
     Author:    Martin Chartier (XMCQCX)
     Date:      2024-04-20
-    Version:   1.0.1
+    Version:   1.0.2
     Tested on: Windows 11
     Github:    https://github.com/XMCQCX/WinExeCommander
     AHKForum:  https://www.autohotkey.com/boards/viewtopic.php?f=83&t=128956
@@ -30,7 +30,7 @@ Class WinExeCmd {
     {
         this.debugMode         := false
         this.scriptName        := 'WinExeCommander'
-        this.scriptVersion     := 'v1.0.1'
+        this.scriptVersion     := 'v1.0.2'
         this.gMainTitle        := 'Events Manager - ' this.scriptName ' ' this.scriptVersion
         this.gEventTitle       := 'Event Creator - ' this.scriptName
         this.gProfileTitle     := 'Profiles Manager - ' this.scriptName
